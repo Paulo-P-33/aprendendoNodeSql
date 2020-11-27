@@ -1,21 +1,22 @@
+const Usuario = require('../models').Usuario
+
 exports.listAll = (req, res) =>{
-    let usuarios =  [
-            {
-                nome: 'teste01',
-                email: 'test@01.com'
-            },
-            {
-                nome: 'teste02',
-                email: 'test@02.com'
-            }
-                    ]
-    res.send(usuarios)
+   Usuario.findAll().then(usuarios => {
+       res.send(usuarios)
+   }).catch(error =>{
+
+   })
+    
 }
 
 exports.createOne = (req, res ) => {
-    let response = {
-        message: 'Usuario criado com sucesso',
-        data : req.body
+   console.log(Usuario)
+   const { nome, email } = req.body
+   Usuario.create({nome, email}).then(usuario => {
+    res.send(usuario)
+   }).catch(error => {
+       res.send(error)
+   })
+    
     }
-    res.send(response)
-}
+    
