@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Lista.belongsTo(models.Usuario, {
         targetkey: 'id',
-        as: 'usuarioId'
+        as: 'UsuarioId'
       })
     }
   };
